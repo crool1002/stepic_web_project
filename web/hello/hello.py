@@ -1,10 +1,8 @@
-def app(environ, start_response):
-	#print environ
-        print environ['QUERY_STRING'].split('&')
-	#data = b"Hello, World!\n"	
-	data = [bytes(str(i).encode('utf-8') + '\n','ascii') for i in environ['QUERY_STRING'].split('&')]
-        start_response("200 OK", [
-            ("Content-Type", "text/plain"),
-            ("Content-Length", str(len(data)))
-        ])
-        return iter([data])
+def app (environ, start_response):                                              
+        print(environ['QUERY_STRING'])                                          
+        status = '200 OK'                                                       
+        response_headers = [('Content-type','text/plain')]                      
+        start_response(status, response_headers)                                
+        resp = environ['QUERY_STRING'].split("&")                               
+        resp = [bytes(item+"\r\n",'ascii') for item in resp]                    
+        return resp

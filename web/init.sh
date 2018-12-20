@@ -1,4 +1,3 @@
-cp /home/box/stepic_web_project/ /home/box/
 sudo ﻿cp /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
 sudo unlink /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart

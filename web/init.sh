@@ -1,8 +1,10 @@
-sudo ﻿cp /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
-sudo unlink /etc/nginx/sites-enabled/default
-sudo /etc/init.d/nginx restart
-sudo ls -s /home/box/web/etc/gunicorn.conf   /etc/gunicorn.d/test
-sudo /etc/init.d/gunicorn restart
-﻿sudo /etc/init.d/mysql start﻿
-cd /home/box/web/hello/
-gunicorn -d 0.0.0.0:8080 hello:app
+
+#sudo nano /etc/nginx/sites-enabled/nginx.conf
+#cp /home/parallels/stepic_web_project/web/etc/nginx.conf /etc/nginx/sites-enabled/
+#sudo unlink /etc/nginx/sites-enabled/default
+#sudo /etc/init.d/nginx restart
+cd /home/parallels/stepic_web_project/web/ask/
+gunicorn -b 0.0.0.0:8000 ask.wsgi:application &
+cd /home/parallels/stepic_web_project/web/hello/
+gunicorn -b 0.0.0.0:8080 hello:app &
+
